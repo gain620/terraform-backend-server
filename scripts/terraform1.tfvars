@@ -1,1 +1,1 @@
-{"vmOptions":{"vmName":"testVMFinal23","vCPU":"2","vRAM":"4GB","vNetwork":"VM Network","guest_id":"ubuntu64Guest"}}
+{"vmOptions":{"vmName":"tetset","vCPU":"4","vRAM":"2GB","vNetwork":"VM Network","guest_id":"ubuntu64Guest"}}

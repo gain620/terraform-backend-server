@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 var fs = require('fs');
 var path = require('path');
+var exec = require('child_process').exec;
+var execSync = require('child_process').execSync;
 // var movies = require('../movies.json');
 
 // router.get('/', function (req, res, next) {
@@ -12,11 +14,11 @@ router.post('/', function (req, res, next) {
     // 0. get req.body
     console.log(req.body);
     // 1. read file 
-    var terraPath = path.join(__dirname, '..', 'scripts', 'terraform.tfvars');
+    // var terraPath = path.join(__dirname, '..', 'scripts', 'terraform.tfvars');
     var terraNewPath = path.join(__dirname, '..', 'scripts', 'terraform1.tfvars');
-    fs.readFile(terraPath, 'utf8', function(err, data) {
-        console.log(data);
-    });
+    // fs.readFile(terraPath, 'utf8', function(err, data) {
+    //     console.log(data);
+    // });
     // // 2. parse string into JSON
     fs.writeFile(terraNewPath, JSON.stringify(req.body), 'utf8', function(err, data) {
         if(err) {
@@ -28,7 +30,10 @@ router.post('/', function (req, res, next) {
     // 5. save string to variables.tf
 
     // 6. finally run terraform apply -auto-approve
-    // 7. del /q terraform.tfstate
+    // 7. del /q terraform.tfstate rm in ubuntu terraform.tfstate
+    const stdout = execSync('cat movies.json');
+    console.log(`stdout: ${stdout}`);
+
 
     // console.log(req.body);
     res.send({testName: "test"});
