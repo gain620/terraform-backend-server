@@ -1,0 +1,1 @@
+{"vmOptions":{"vmName":"testVMFinal23","vCPU":"2","vRAM":"4GB","vNetwork":"VM Network","guest_id":"ubuntu64Guest"}}
