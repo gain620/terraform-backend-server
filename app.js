@@ -23,7 +23,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/api/movies', moviesAPI);
+//app.use('/api/movies', moviesAPI);
 app.use('/api/terraform', terraformAPI);
 
 // catch 404 and forward to error handler
