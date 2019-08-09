@@ -31,8 +31,8 @@ router.post('/', function (req, res, next) {
 
     // 6. finally run terraform apply -auto-approve
     // 7. del /q terraform.tfstate rm in ubuntu terraform.tfstate
-    const stdout = execSync('cat movies.json');
-    console.log(`stdout: ${stdout}`);
+    //const stdout = execSync('cat movies.json');
+    //console.log(`stdout: ${stdout}`);
 
 
     // console.log(req.body);
