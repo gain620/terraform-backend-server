@@ -11,12 +11,19 @@ var execSync = require('child_process').execSync;
 
 let vmOptions;
 
+function testSyncCommand(commandStr) {
+	const stdout = execSync(commandStr, {encoding: 'utf8'});
+
+	console.log(`stdout = ${stdout}`);
+}
+
 // req.body의 vmOptions 받아 variable.tf에 저장후 terraform apply -auto-apply 실행
 router.post('/', function (req, res, next) {
     // 0. get req.body
     // console.log(req.body);
     // 1. read file 
     // var terraPath = path.join(__dirname, '..', 'scripts', 'terraform.tfvars');
+    console.log(__dirname);
     var terraNewPath = path.join(__dirname, '..', 'scripts', 'terraform.tfvars.json');
     // fs.readFile(terraPath, 'utf8', function(err, data) {
     //     console.log(data);
@@ -41,7 +48,7 @@ router.post('/', function (req, res, next) {
     // 4. convert JSON to string
     // 5. save string to variables.tf
     // 6. finally run terraform apply -auto-approve
-    execSync();
+    testSyncCommand('cd /home/john/terraform-backend-server/scripts; node createVM.js');
     // 7. del /q terraform.tfstate rm in ubuntu terraform.tfstate
     //const stdout = execSync('cat movies.json');
     //console.log(`stdout: ${stdout}`);
