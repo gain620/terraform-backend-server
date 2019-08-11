@@ -9,21 +9,35 @@ var execSync = require('child_process').execSync;
 // router.get('/', function (req, res, next) {
 // });
 
+let vmOptions;
+
 // req.body의 vmOptions 받아 variable.tf에 저장후 terraform apply -auto-apply 실행
 router.post('/', function (req, res, next) {
     // 0. get req.body
-    console.log(req.body);
+    // console.log(req.body);
     // 1. read file 
     // var terraPath = path.join(__dirname, '..', 'scripts', 'terraform.tfvars');
-    var terraNewPath = path.join(__dirname, '..', 'scripts', 'terraform1.tfvars');
+    var terraNewPath = path.join(__dirname, '..', 'scripts', 'terraform.tfvars.json');
     // fs.readFile(terraPath, 'utf8', function(err, data) {
     //     console.log(data);
     // });
     // // 2. parse string into JSON
-    fs.writeFile(terraNewPath, JSON.stringify(req.body), 'utf8', function(err, data) {
+
+    // parse and manipulate JSON
+    vmOptions = req.body.vmOptions;
+    vmOptions.vm_ip = vmOptions.vm_ip.slice(0, vmOptions.vm_ip.indexOf('/'));
+    
+    delete vmOptions.vCount;
+    delete vmOptions.vNetwork;
+    delete vmOptions.guest_id;
+
+    vmOptStr = JSON.stringify(vmOptions);
+    fs.writeFile(terraNewPath, vmOptStr, 'utf8', function(err, data) {
         if(err) {
             console.log(err);
         }
+
+        res.send({testName: vmOptions.vm_name + ' VM 생성 완료!'});
     });
     // 3. input variables into JSON
     // 4. convert JSON to string
@@ -34,9 +48,7 @@ router.post('/', function (req, res, next) {
     //const stdout = execSync('cat movies.json');
     //console.log(`stdout: ${stdout}`);
 
-
     // console.log(req.body);
-    res.send({testName: "test123"});
 });
 
 
