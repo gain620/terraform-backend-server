@@ -32,22 +32,20 @@ router.post('/', function (req, res, next) {
     delete vmOptions.guest_id;
 
     vmOptStr = JSON.stringify(vmOptions);
-    fs.writeFile(terraNewPath, vmOptStr, 'utf8', function(err, data) {
+    fs.writeFileSync(terraNewPath, vmOptStr, 'utf8', function(err, data) {
         if(err) {
             console.log(err);
         }
-
-        res.send({testName: vmOptions.vm_name + ' VM 생성 완료!'});
     });
     // 3. input variables into JSON
     // 4. convert JSON to string
     // 5. save string to variables.tf
-
     // 6. finally run terraform apply -auto-approve
+    execSync();
     // 7. del /q terraform.tfstate rm in ubuntu terraform.tfstate
     //const stdout = execSync('cat movies.json');
     //console.log(`stdout: ${stdout}`);
-
+    res.send({testName: vmOptions.vm_name + ' VM 생성 완료!'});
     // console.log(req.body);
 });
 
