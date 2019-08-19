@@ -90,4 +90,21 @@ router.post("/save", function(req, res, next) {
   res.send({ testName: vmInst[0].vm_name + " VM 생성 완료!" });
 });
 
+router.get("/load", function(req, res, next) {
+  var terraLoadPath = path.join(__dirname, "..", "infra", "infra.json");
+
+  // parse and manipulate JSON
+  // vmInst = req.body.vmInstances;
+  // dbInst = req.body.dbInstances;
+  // infraStr = JSON.stringify(vmInst);
+  // infraStr += JSON.stringify(dbInst);
+  var infraStr = fs.readFileSync(terraLoadPath, "utf8");
+  // test를 위해 vmInstances JSON 까지만 cut
+  infraStr = infraStr.slice(0, infraStr.indexOf("]") + 1);
+  console.log(infraStr);
+  var infraJSON = JSON.parse(infraStr);
+  console.log(infraJSON);
+  res.send(infraJSON);
+});
+
 module.exports = router;

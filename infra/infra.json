@@ -1,1 +1,56 @@
-[{"x":33,"y":55,"vCount":"","vm_name":"Web-1ss","num_cpus":"2","memory":"4096","disk_size":"123","vNetwork":"sd","guest_id":"ubuntu64Guest","vm_ip":"123123","vmModal":"modal-0"},{"x":55,"y":100,"vCount":"","vm_name":"Web-232","num_cpus":"2","memory":"4096","disk_size":"23","vNetwork":"sdfsdf","guest_id":"centOS64Guest","vm_ip":"123213","vmModal":"modal-1"},{"x":56,"y":20,"vCount":"","vm_name":"new234","num_cpus":"8","memory":"8192","disk_size":"234","vNetwork":"2223","guest_id":"centOS64Guest","vm_ip":"2334234","vmModal":"modal-0.2563598452772897"}][{"x":133,"y":155,"vCount":"","vm_name":"MariaDB","num_cpus":"2","memory":"2048","disk_size":"12","vNetwork":"dsf","guest_id":"ubuntu64Guest","dbms_name":"mysql","vm_ip":"234234","dbModal":"dbmodal-0"}]
+[
+  {
+    "x": 200,
+    "y": 200,
+    "vCount": "",
+    "vm_name": "Jewel",
+    "num_cpus": "2",
+    "memory": "4096",
+    "disk_size": "123",
+    "vNetwork": "sd",
+    "guest_id": "ubuntu64Guest",
+    "vm_ip": "123123",
+    "vmModal": "modal-0"
+  },
+  {
+    "x": 270,
+    "y": 70,
+    "vCount": "",
+    "vm_name": "loadWorks",
+    "num_cpus": "8",
+    "memory": "8192",
+    "disk_size": "234",
+    "vNetwork": "2223",
+    "guest_id": "centOS64Guest",
+    "vm_ip": "2334234",
+    "vmModal": "modal-0.2563598452772897"
+  },
+  {
+    "x": 127,
+    "y": 122,
+    "vCount": "",
+    "vm_name": "new2",
+    "num_cpus": null,
+    "memory": null,
+    "disk_size": "",
+    "vNetwork": "",
+    "guest_id": null,
+    "vm_ip": "",
+    "vmModal": "modal-1.669794537234821"
+  }
+][
+  {
+    "x": 133,
+    "y": 155,
+    "vCount": "",
+    "vm_name": "MySQL_DB",
+    "num_cpus": null,
+    "memory": null,
+    "disk_size": "",
+    "vNetwork": "",
+    "guest_id": null,
+    "dbms_name": "",
+    "vm_ip": "",
+    "dbModal": "dbmodal-0"
+  }
+]
