@@ -64,10 +64,21 @@ router.post("/", function(req, res, next) {
 });
 
 router.post("/save", function(req, res, next) {
-  var terraNewPath = path.join(__dirname, "..", "infra", "infra.json");
+  var infraFileName = req.body.infraName;
+  var infraOwner = "admin";
+  var currDate = new Date().toDateString();
+  // currDate = currDate.replace(" ", "");
+
+  var terraNewPath = path.join(
+    __dirname,
+    "..",
+    "infra",
+    `infra.${infraFileName}.${infraOwner}.${currDate}.json`
+  );
 
   // parse and manipulate JSON
   vmInst = req.body.vmInstances;
+  nwInst = req.body.nwInstances;
   dbInst = req.body.dbInstances;
   //   vmInst.vm_ip = vmInst.vm_ip.slice(0, vmOptions.vm_ip.indexOf("/"));
 
@@ -76,6 +87,7 @@ router.post("/save", function(req, res, next) {
   //   delete vmInst.guest_id;
 
   infraStr = JSON.stringify(vmInst);
+  infraStr += JSON.stringify(nwInst);
   infraStr += JSON.stringify(dbInst);
   fs.writeFileSync(terraNewPath, infraStr, "utf8", function(err, data) {
     if (err) {
@@ -85,13 +97,39 @@ router.post("/save", function(req, res, next) {
   // 3. input variables into JSON
   // 4. convert JSON to string
   // 7. del /q terraform.tfstate rm in ubuntu terraform.tfstate
-  //const stdout = execSync('cat movies.json');
-  //console.log(`stdout: ${stdout}`);
-  res.send({ testName: vmInst[0].vm_name + " VM 생성 완료!" });
+
+  res.send();
+});
+
+router.get("/loadInfraList", function(req, res, next) {
+  var terraLoadListPath = path.join(__dirname, "..", "infra");
+  var fileList = [];
+
+  fs.readdir(terraLoadListPath, (err, files) => {
+    files.forEach(file => {
+      var tokenArr = file.split(".");
+
+      var infraObj = {
+        infra_name: tokenArr[1],
+        owner: tokenArr[2],
+        edit_date: tokenArr[3]
+      };
+
+      fileList.push(infraObj);
+    });
+
+    res.send(fileList);
+  });
 });
 
 router.get("/load", function(req, res, next) {
-  var terraLoadPath = path.join(__dirname, "..", "infra", "infra.json");
+  var infraReqName = "frontTest";
+  var terraLoadPath = path.join(
+    __dirname,
+    "..",
+    "infra",
+    `infra.${infraReqName}.json`
+  );
 
   // parse and manipulate JSON
   // vmInst = req.body.vmInstances;
@@ -100,8 +138,8 @@ router.get("/load", function(req, res, next) {
   // infraStr += JSON.stringify(dbInst);
   var infraStr = fs.readFileSync(terraLoadPath, "utf8");
   // test를 위해 vmInstances JSON 까지만 cut
+  // 그냥 string으로 보내고 front에서 파싱
   infraStr = infraStr.slice(0, infraStr.indexOf("]") + 1);
-  console.log(infraStr);
   var infraJSON = JSON.parse(infraStr);
   console.log(infraJSON);
   res.send(infraJSON);
