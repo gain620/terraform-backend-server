@@ -80,11 +80,6 @@ router.post("/save", function(req, res, next) {
   vmInst = req.body.vmInstances;
   nwInst = req.body.nwInstances;
   dbInst = req.body.dbInstances;
-  //   vmInst.vm_ip = vmInst.vm_ip.slice(0, vmOptions.vm_ip.indexOf("/"));
-
-  //   delete vmInst.vCount;
-  //   delete vmInst.vNetwork;
-  //   delete vmInst.guest_id;
 
   infraStr = JSON.stringify(vmInst);
   infraStr += JSON.stringify(nwInst);
@@ -94,11 +89,42 @@ router.post("/save", function(req, res, next) {
       console.log(err);
     }
   });
-  // 3. input variables into JSON
-  // 4. convert JSON to string
-  // 7. del /q terraform.tfstate rm in ubuntu terraform.tfstate
 
-  res.send();
+  // alert users that file is saved succesfully
+  // res.send();
+});
+
+// TODO : REFACTOR ASYNCHRONOUS LOGIC HERE
+// causes http headers sent error
+router.get("/loadInfraModel", function(req, res, next) {
+  var terraLoadListPath = path.join(__dirname, "..", "infra");
+  var reqInfraName = req.query.infraName;
+  console.log(reqInfraName);
+
+  fs.readdir(terraLoadListPath, (err, files) => {
+    files.forEach(file => {
+      var tokenArr = file.split(".");
+
+      if (tokenArr[1] === reqInfraName) {
+        fs.readFile(
+          path.join(__dirname, "..", "infra", file),
+          "utf-8",
+          (err, data) => {
+            if (err) throw err;
+
+            // TODO : CHANGE LOGIC HERE!!!
+            // this is a temporary code for simulation purpose!!!
+            var vmStr = data.slice(0, data.indexOf("]") + 1);
+            var vmJSON = JSON.parse(vmStr);
+
+            res.send(vmJSON);
+            return;
+            //res.send(data);
+          }
+        );
+      }
+    });
+  });
 });
 
 router.get("/loadInfraList", function(req, res, next) {
@@ -119,6 +145,7 @@ router.get("/loadInfraList", function(req, res, next) {
     });
 
     res.send(fileList);
+    return;
   });
 });
 
@@ -141,7 +168,6 @@ router.get("/load", function(req, res, next) {
   // 그냥 string으로 보내고 front에서 파싱
   infraStr = infraStr.slice(0, infraStr.indexOf("]") + 1);
   var infraJSON = JSON.parse(infraStr);
-  console.log(infraJSON);
   res.send(infraJSON);
 });
 

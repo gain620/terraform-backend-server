@@ -1,33 +1,7 @@
 [
   {
-    "x": 438,
-    "y": 328,
-    "vCount": "",
-    "vm_name": "Web-666",
-    "num_cpus": null,
-    "memory": null,
-    "disk_size": "",
-    "vNetwork": "",
-    "guest_id": null,
-    "vm_ip": "",
-    "vmModal": "modal-0"
-  },
-  {
-    "x": 238,
-    "y": 328,
-    "vCount": "",
-    "vm_name": "Web-321",
-    "num_cpus": null,
-    "memory": null,
-    "disk_size": "",
-    "vNetwork": "",
-    "guest_id": null,
-    "vm_ip": "",
-    "vmModal": "modal-0"
-  },
-  {
-    "x": 138,
-    "y": 228,
+    "x": 191,
+    "y": 234,
     "vCount": "",
     "vm_name": "Web-1",
     "num_cpus": null,
@@ -39,8 +13,8 @@
     "vmModal": "modal-0"
   },
   {
-    "x": 258,
-    "y": 224,
+    "x": 321,
+    "y": 234,
     "vCount": "",
     "vm_name": "Web-2",
     "num_cpus": null,
@@ -52,8 +26,8 @@
     "vmModal": "modal-1"
   },
   {
-    "x": 385,
-    "y": 223,
+    "x": 406,
+    "y": 90,
     "vCount": "",
     "vm_name": "new",
     "num_cpus": null,
@@ -62,11 +36,11 @@
     "vNetwork": "",
     "guest_id": null,
     "vm_ip": "",
-    "vmModal": "modal-6.954363373109535"
+    "vmModal": "modal-6.17185482773311"
   },
   {
-    "x": 558,
-    "y": 222,
+    "x": 254,
+    "y": 92,
     "vCount": "",
     "vm_name": "new",
     "num_cpus": null,
@@ -75,11 +49,11 @@
     "vNetwork": "",
     "guest_id": null,
     "vm_ip": "",
-    "vmModal": "modal-9.27961117796211"
+    "vmModal": "modal-0.5867733892304017"
   },
   {
-    "x": 492,
-    "y": 222,
+    "x": 477,
+    "y": 233,
     "vCount": "",
     "vm_name": "new",
     "num_cpus": null,
@@ -88,7 +62,7 @@
     "vNetwork": "",
     "guest_id": null,
     "vm_ip": "",
-    "vmModal": "modal-5.7281012731725305"
+    "vmModal": "modal-7.242081765787482"
   }
 ][
   {
@@ -104,8 +78,8 @@
   }
 ][
   {
-    "x": -142,
-    "y": 458,
+    "x": 305,
+    "y": 428,
     "vCount": "",
     "vm_name": "MySQL_DB",
     "num_cpus": null,
