@@ -1,0 +1,97 @@
+[
+  {
+    "x": 243,
+    "y": 242,
+    "vCount": "",
+    "vm_name": "Web-1",
+    "num_cpus": null,
+    "memory": null,
+    "disk_size": "",
+    "vNetwork": "",
+    "guest_id": null,
+    "vm_ip": "",
+    "vmModal": "modal-0"
+  },
+  {
+    "x": 348,
+    "y": 244,
+    "vCount": "",
+    "vm_name": "Web-2",
+    "num_cpus": null,
+    "memory": null,
+    "disk_size": "",
+    "vNetwork": "",
+    "guest_id": null,
+    "vm_ip": "",
+    "vmModal": "modal-1"
+  },
+  {
+    "x": 478,
+    "y": 242,
+    "vCount": "",
+    "vm_name": "Web-3",
+    "num_cpus": null,
+    "memory": null,
+    "disk_size": "",
+    "vNetwork": "",
+    "guest_id": null,
+    "vm_ip": "",
+    "vmModal": "modal-8.671930145965012"
+  },
+  {
+    "x": 346,
+    "y": 64,
+    "vCount": "",
+    "vm_name": "LB-1",
+    "num_cpus": "2",
+    "memory": "4096",
+    "disk_size": "",
+    "vNetwork": "",
+    "guest_id": "ubuntu64Guest",
+    "vm_ip": "",
+    "vmModal": "modal-1.8915722547305602"
+  }
+][
+  {
+    "x": 200,
+    "y": 155,
+    "nw_width" : 400,
+    "nw_height" : 160,
+    "nw_name": "External Subnet",
+    "nw_gw_cidr": "172.16.0.1/24",
+    "nw_type": "Routed",
+    "edge_gw": "ESG-Chris02",
+    "dns": "1.1.1.1",
+    "nw_static_pool": "172.16.0.2-172.16.0.254",
+    "nwModal": "nwmodal-0"
+  }
+][
+  {
+    "x": 355,
+    "y": 352,
+    "vCount": "",
+    "vm_name": "MySQL_DB",
+    "num_cpus": null,
+    "memory": null,
+    "disk_size": "",
+    "vNetwork": "",
+    "guest_id": null,
+    "dbms_name": "",
+    "vm_ip": "",
+    "dbModal": "dbmodal-0"
+  },
+  {
+    "x": 462,
+    "y": 352,
+    "vCount": "",
+    "vm_name": "MariaDB",
+    "num_cpus": null,
+    "memory": null,
+    "disk_size": "",
+    "vNetwork": "",
+    "guest_id": null,
+    "dbms_name": "",
+    "vm_ip": "",
+    "dbModal": "dbmodal-1.2992036005377172"
+  }
+]

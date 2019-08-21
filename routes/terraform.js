@@ -2,14 +2,9 @@ var express = require("express");
 var router = express.Router();
 var fs = require("fs");
 var path = require("path");
-var exec = require("child_process").exec;
 var execSync = require("child_process").execSync;
-// var movies = require('../movies.json');
 
-// router.get('/', function (req, res, next) {
-// });
-
-let vmInst, dbInst;
+let vmInst, nwInst, dbInst;
 
 function testSyncCommand(commandStr) {
   const stdout = execSync(commandStr, { encoding: "utf8" });
@@ -65,7 +60,7 @@ router.post("/", function(req, res, next) {
 
 router.post("/save", function(req, res, next) {
   var infraFileName = req.body.infraName;
-  var infraOwner = "admin";
+  var infraOwner = "gain620";
   var currDate = new Date().toDateString();
   // currDate = currDate.replace(" ", "");
 
@@ -150,25 +145,35 @@ router.get("/loadInfraList", function(req, res, next) {
 });
 
 router.get("/load", function(req, res, next) {
-  var infraReqName = "frontTest";
+  var infraReqName = "KT_Architecture";
   var terraLoadPath = path.join(
     __dirname,
     "..",
     "infra",
-    `infra.${infraReqName}.json`
+    `infra.${infraReqName}.admin.Wed Aug 21 2019.json`
   );
 
-  // parse and manipulate JSON
-  // vmInst = req.body.vmInstances;
-  // dbInst = req.body.dbInstances;
-  // infraStr = JSON.stringify(vmInst);
-  // infraStr += JSON.stringify(dbInst);
+  var infraList = [];
+  var vmList = [];
+  var nwList = [];
+  var dbList = [];
+  infraList.push(vmList, nwList, dbList);
+  var instanceTypes = 3;
+
   var infraStr = fs.readFileSync(terraLoadPath, "utf8");
   // test를 위해 vmInstances JSON 까지만 cut
   // 그냥 string으로 보내고 front에서 파싱
-  infraStr = infraStr.slice(0, infraStr.indexOf("]") + 1);
-  var infraJSON = JSON.parse(infraStr);
-  res.send(infraJSON);
+
+  for (var i = 0; i < instanceTypes; i++) {
+    putStr = infraStr.slice(0, infraStr.indexOf("]") + 1);
+    infraList[i] = JSON.parse(putStr);
+    infraStr = infraStr.slice(infraStr.indexOf("]") + 1, infraStr.length);
+  }
+  // console.log(infraList);
+
+  // var infraJSON = JSON.parse(infraList);
+  // console.log(infraJSON);
+  res.send(infraList);
 });
 
 module.exports = router;
